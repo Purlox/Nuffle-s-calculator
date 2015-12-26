@@ -3,6 +3,7 @@ module Data.Chance
 , chanceToRational
 , getPercentage
 , reduce
+, getInverse
 ) where
 
 import Data.Ratio as Ratio
@@ -45,4 +46,11 @@ reduce (x :/: y) = x' :/: y'
     where commonDivisor = gcd x y
           x' = x `div` commonDivisor
           y' = y `div` commonDivisor
+
+
+-- | Returns inverse chance to the given one
+--
+-- In other words, if the original Chance was reflecting the chance that P happens, then the inverse one reflects the chance of P not happening
+getInverse :: Chance -> Chance
+getInverse (x :/: y) = (y - x) :/: y
 
