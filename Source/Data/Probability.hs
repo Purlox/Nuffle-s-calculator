@@ -54,3 +54,17 @@ reduce (x :/: y) = x' :/: y'
 getInverse :: Probability -> Probability
 getInverse (x :/: y) = (y - x) :/: y
 
+
+-- | Returns the Probability of the two probabilities happening at the same time.
+--
+-- Assumes that they are independant.
+(&%&) :: Probability -> Probability -> Probability
+(a :/: b) &%& (c :/: d) = (a * c) :/: (b * d)
+
+
+-- | Returns the Probability of at least one of the two probabilities happening
+--
+-- Assumes that they are mutually exclusive.
+(|%|) :: Probability -> Probability -> Probability
+(a :/: b) |%| (c :/: d) = (a*d + c*b) :/: (b * d)
+
