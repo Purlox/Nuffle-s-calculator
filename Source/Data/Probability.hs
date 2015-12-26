@@ -16,6 +16,9 @@ data Probability = Int :/: Int
     deriving (Show)
 
 
+infix 5 :/:
+
+
 instance Eq Probability where
     (==) = equals `on` reduce
         where equals (a :/: b) (c :/: d) = a == c && b == d
@@ -52,19 +55,19 @@ reduce (x :/: y) = x' :/: y'
 --
 -- In other words, if the original Probability was of P happening, then the inverse Probability reflects P not happening.
 getInverse :: Probability -> Probability
-getInverse (x :/: y) = (y - x) :/: y
+getInverse (x :/: y) = y - x :/: y
 
 
 -- | Returns the Probability of the two probabilities happening at the same time.
 --
 -- Assumes that they are independant.
 (&%&) :: Probability -> Probability -> Probability
-(a :/: b) &%& (c :/: d) = (a * c) :/: (b * d)
+(a :/: b) &%& (c :/: d) = a * c :/: b * d
 
 
 -- | Returns the Probability of at least one of the two probabilities happening
 --
 -- Assumes that they are mutually exclusive.
 (|%|) :: Probability -> Probability -> Probability
-(a :/: b) |%| (c :/: d) = (a*d + c*b) :/: (b * d)
+(a :/: b) |%| (c :/: d) = a*d + c*b :/: b * d
 
