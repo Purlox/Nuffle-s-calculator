@@ -1,6 +1,6 @@
 module BloodBowl.Skills
 ( Skill(..)
-, SkillCategory
+, SkillCategory(..)
 
 , getCategory
 , skills
