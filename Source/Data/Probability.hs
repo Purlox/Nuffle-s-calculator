@@ -10,7 +10,6 @@ module Data.Probability
 
 import Data.Ratio as Ratio
 import Data.Function (on)
-import Data.Monoid ((<>))
 
 
 -- | Represents the probability of something happening. Shouldn't get higher than 1.
@@ -42,9 +41,9 @@ instance Num Probability where
     
     abs (a :/: b) = abs a :/: b
     
-    signum (a :/: _) = signum a
+    signum (a :/: _) = signum a :/: 1
     
-    fromInteger i = i :/: 1
+    fromInteger i = fromInteger i :/: 1
 
 
 -- | Converts Probability to Rational number.
