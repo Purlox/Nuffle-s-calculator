@@ -67,21 +67,21 @@ reduce (x :/: y) = x' :/: y'
 
 -- | Returns inverse Probability to the given one.
 --
--- In other words, if the original Probability was of P happening, then the inverse Probability reflects P not happening.
+-- Equivalent to P(A^c).
 getInverse :: Probability -> Probability
 getInverse (x :/: y) = y - x :/: y
 
 
 -- | Returns the Probability of the two probabilities happening at the same time.
 --
--- Assumes that they are independant.
+-- Equivalent to P(A n B), assuming that A and B are independant.
 (&%&) :: Probability -> Probability -> Probability
 (&%&) = (*)
 
 
 -- | Returns the Probability of at least one of the two probabilities happening
 --
--- Assumes that they are mutually exclusive.
+-- Eqivalent to P(A u B), assuming that A and B are mutually exclusive.
 (|%|) :: Probability -> Probability -> Probability
 (|%|) = (+)
 
