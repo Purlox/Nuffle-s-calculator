@@ -28,12 +28,12 @@ instance Ord Chance where
                         y = c * b
 
 
--- | Converts Chance to Rational number
+-- | Converts Chance to Rational number.
 chanceToRational :: Chance -> Rational
 chanceToRational (x :/: y) = toInteger x Ratio.% toInteger y
 
 
--- | Converts Chance to a percentage
+-- | Converts Chance to a percentage.
 getPercentage :: Chance -> Double
 getPercentage (x :/: y) = 100 * fromIntegral x / fromIntegral y
 
@@ -48,9 +48,9 @@ reduce (x :/: y) = x' :/: y'
           y' = y `div` commonDivisor
 
 
--- | Returns inverse chance to the given one
+-- | Returns inverse chance to the given one.
 --
--- In other words, if the original Chance was reflecting the chance that P happens, then the inverse one reflects the chance of P not happening
+-- In other words, if the original Chance was reflecting the chance that P happens, then the inverse one reflects the chance of P not happening.
 getInverse :: Chance -> Chance
 getInverse (x :/: y) = (y - x) :/: y
 
