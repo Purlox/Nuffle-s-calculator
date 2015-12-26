@@ -4,6 +4,8 @@ module Data.Probability
 , getPercentage
 , reduce
 , getInverse
+, (&%&)
+, (|%|)
 ) where
 
 import Data.Ratio as Ratio
