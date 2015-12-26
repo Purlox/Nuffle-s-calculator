@@ -31,6 +31,20 @@ instance Ord Probability where
                         y = c * b
 
 
+instance Num Probability where
+    (a :/: b) + (c :/: d) = (a*d + b*c) :/: (b * d)
+    
+    (a :/: b) * (c :/: d) = (a * c) :/: (b * d)
+
+    negate (a :/: b) = negate a :/: b
+    
+    abs (a :/: b) = abs a :/: b
+    
+    signum (a :/: _) = signum a
+    
+    fromInteger i = i :/: 1
+
+
 -- | Converts Probability to Rational number.
 probabilityToRational :: Probability -> Rational
 probabilityToRational (x :/: y) = toInteger x Ratio.% toInteger y
@@ -62,12 +76,12 @@ getInverse (x :/: y) = y - x :/: y
 --
 -- Assumes that they are independant.
 (&%&) :: Probability -> Probability -> Probability
-(a :/: b) &%& (c :/: d) = a * c :/: b * d
+(&%&) = (*)
 
 
 -- | Returns the Probability of at least one of the two probabilities happening
 --
 -- Assumes that they are mutually exclusive.
 (|%|) :: Probability -> Probability -> Probability
-(a :/: b) |%| (c :/: d) = a*d + c*b :/: b * d
+(|%|) = (+)
 
