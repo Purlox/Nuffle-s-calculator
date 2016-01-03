@@ -3,10 +3,15 @@
 The max values of those stats are a bit on the high end to make sure that even if you got really lucky and got high stat, that you still could use the stats here.
 -}
 module BloodBowl.Stats
-( MA(..)
-, ST(..)
-, AG(..)
-, AV(..)
+( MovementAllowance(..)
+, Strength(..)
+, Agility(..)
+, ArmourValue(..)
+
+, MA
+, ST
+, AG
+, AV
 ) where
 
 
