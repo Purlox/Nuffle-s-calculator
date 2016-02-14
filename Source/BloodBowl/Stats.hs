@@ -12,6 +12,11 @@ module BloodBowl.Stats
 , ST
 , AG
 , AV
+
+, toMA
+, toST
+, toAG
+, toAV
 ) where
 
 
@@ -81,4 +86,21 @@ type MA = MovementAllowance
 type ST = Strength
 type AG = Agility
 type AV = ArmourValue
+
+
+-- | Converts number to MA
+toMA :: Int -> MA
+toMA x = toEnum (x-1)
+
+-- | Converts number to ST
+toST :: Int -> ST
+toST x = toEnum (x-1)
+
+-- | Converts number to AG
+toAG :: Int -> AG
+toAG x = toEnum (x-1)
+
+-- | Converts number to AV
+toAV :: Int -> AV
+toAV x = toEnum (x-1)
 
